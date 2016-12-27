@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	android:id="@+id/activity_main"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	tools:context="frlgrd.game.MainActivity">
+
+	<ImageView
+		android:id="@+id/background"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:scaleType="centerCrop"/>
+
+	<frlgrd.game.GameView
+		android:id="@+id/game"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/backgroundColor"/>
+
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="100dp"
+		android:background="@drawable/gradient"/>
+
+	<TextView
+		android:id="@+id/score"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginLeft="10dp"
+		android:text="0"
+		android:textColor="@android:color/white"
+		android:textSize="60sp"
+		android:textStyle="bold"
+		tools:ignore="HardcodedText,RtlHardcoded"/>
+
+	<TextView
+		android:id="@+id/bestScore"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentEnd="true"
+		android:layout_margin="10dp"
+		android:textColor="@android:color/white"
+		android:textSize="20sp"
+		android:textStyle="bold"
+		tools:ignore="HardcodedText"/>
+</RelativeLayout>
