@@ -26,15 +26,14 @@ class Bird extends GameObject {
 
 	Bird(View parent) {
 		super(parent);
+		Context context = parent.getContext();
 		x = parent.getWidth() / 4;
 		y = (int) (parent.getHeight() * .75F);
-		size = parent.getWidth() / 15;
-		hitBox = new RectF(x, y, x + size, y + size);
-		Context context = parent.getContext();
-
+		matt = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
+		size = matt.getHeight();
+		hitBox = new RectF(x - size / 2, y - size / 2, x + size / 2, y + size / 2);
 		lift = DimensionUtils.toDp(context, 13);
 		gravity = DimensionUtils.toDp(context, .5F);
-		matt = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
 	}
 
 	@Override public void show(Canvas canvas) {
@@ -55,15 +54,15 @@ class Bird extends GameObject {
 			y = parent.getTop();
 			velocity = 0;
 		}
-		if (y + size > parent.getBottom()) {
-			y = (int) (parent.getBottom() - size);
+		if (y > parent.getBottom()) {
+			y = (int) (parent.getBottom());
 			velocity = 0;
 			if (bottomTouchListener != null) {
 				bottomTouchListener.onBottomTouched();
 			}
 		}
-		hitBox.top = y;
-		hitBox.bottom = y + size;
+		hitBox.top = y - size / 2;
+		hitBox.bottom = y + size / 2;
 	}
 
 	@Override boolean isOutOfView(View parent) {
