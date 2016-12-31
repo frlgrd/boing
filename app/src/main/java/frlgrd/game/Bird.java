@@ -55,7 +55,7 @@ class Bird extends GameObject {
 			velocity = 0;
 		}
 		if (y > parent.getBottom()) {
-			y = (int) (parent.getBottom());
+			y = parent.getBottom();
 			velocity = 0;
 			if (bottomTouchListener != null) {
 				bottomTouchListener.onBottomTouched();

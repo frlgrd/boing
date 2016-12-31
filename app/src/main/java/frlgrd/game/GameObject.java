@@ -5,7 +5,7 @@ import android.view.View;
 
 abstract class GameObject {
 
-	View parent;
+	protected View parent;
 
 	GameObject(View parent) {
 		this.parent = parent;

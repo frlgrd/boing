@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
 		Glide.with(this).load(R.raw.laura).into(imageViewTarget);
 		scoreLabel = (TextView) findViewById(R.id.score);
 		bestScore = (TextView) findViewById(R.id.bestScore);
-		bestScore.setText(String.valueOf(preferences.getInt(BEST_SCORE, 0)));
+		bestScore.setText(String.valueOf(getBestScore()));
 
 		mediaPlayer = MediaPlayer.create(this, R.raw.sound);
 
@@ -49,12 +49,16 @@ public class MainActivity extends AppCompatActivity {
 				if (!paused) {
 					vibrator.vibrate(50);
 				}
-				if (preferences.getInt(BEST_SCORE, 0) < score) {
+				if (getBestScore() < score) {
 					preferences.edit().putInt(BEST_SCORE, score).apply();
 					bestScore.setText(String.valueOf(score));
 				}
 			}
 		});
+	}
+
+	private int getBestScore() {
+		return preferences.getInt(BEST_SCORE, 0);
 	}
 
 	@Override protected void onDestroy() {
