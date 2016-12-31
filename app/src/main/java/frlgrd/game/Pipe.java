@@ -61,9 +61,9 @@ class Pipe extends GameObject {
 		return top.right < parent.getLeft();
 	}
 
-	boolean isBirdTouching(Bird bird) {
+	boolean isMattTouching(Matt matt) {
 		if (touched) return false;
-		boolean touching = RectF.intersects(top, bird.getHitBox()) || RectF.intersects(bird.getHitBox(), bottom);
+		boolean touching = RectF.intersects(top, matt.getHitBox()) || RectF.intersects(matt.getHitBox(), bottom);
 		if (touching) {
 			touched = true;
 		}
@@ -78,10 +78,10 @@ class Pipe extends GameObject {
 		return new Random().nextInt((int) ((max - min) + 1)) + min;
 	}
 
-	boolean winPoint(Bird bird) {
+	boolean winPoint(Matt matt) {
 		if (touched) return false;
 		boolean winPoint = false;
-		if (top.right < bird.getHitBox().left && !passed) {
+		if (top.right < matt.getHitBox().left && !passed) {
 			winPoint = true;
 			passed = true;
 		}

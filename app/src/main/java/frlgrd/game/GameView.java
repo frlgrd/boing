@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class GameView extends View implements View.OnClickListener, Bird.BottomTouchListener {
-	private Bird bird;
+public class GameView extends View implements View.OnClickListener, Matt.BottomTouchListener {
+	private Matt matt;
 	private List<GameObject> gameObjects = new ArrayList<>();
 	private int frameCount = 1;
 	private int score = 0;
@@ -41,10 +41,10 @@ public class GameView extends View implements View.OnClickListener, Bird.BottomT
 
 	@Override protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
-		if (bird == null) {
-			bird = new Bird(this);
-			bird.setBottomTouchListener(this);
-			gameObjects.add(bird);
+		if (matt == null) {
+			matt = new Matt(this);
+			matt.setBottomTouchListener(this);
+			gameObjects.add(matt);
 			gameObjects.add(new Pipe(this));
 		}
 		if (frameCount % 150 == 0) {
@@ -60,10 +60,10 @@ public class GameView extends View implements View.OnClickListener, Bird.BottomT
 				Pipe pipe = (Pipe) go;
 				if (pipe.isOutOfView(this)) {
 					iterator.remove();
-				} else if (pipe.isBirdTouching(bird)) {
+				} else if (pipe.isMattTouching(matt)) {
 					pipeTouched(pipe);
 
-				} else if (pipe.winPoint(bird)) {
+				} else if (pipe.winPoint(matt)) {
 					scoreUp();
 				}
 			}
@@ -93,8 +93,8 @@ public class GameView extends View implements View.OnClickListener, Bird.BottomT
 	}
 
 	@Override public void onClick(View v) {
-		if (bird != null) {
-			bird.lift();
+		if (matt != null) {
+			matt.lift();
 		}
 	}
 

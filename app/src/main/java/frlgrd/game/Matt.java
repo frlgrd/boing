@@ -8,7 +8,7 @@ import android.graphics.Matrix;
 import android.graphics.RectF;
 import android.view.View;
 
-class Bird extends GameObject {
+class Matt extends GameObject {
 
 	private final float gravity;
 	private float velocity = 0;
@@ -24,7 +24,7 @@ class Bird extends GameObject {
 	private boolean hasLifted = false;
 	private BottomTouchListener bottomTouchListener;
 
-	Bird(View parent) {
+	Matt(View parent) {
 		super(parent);
 		Context context = parent.getContext();
 		x = parent.getWidth() / 4;
