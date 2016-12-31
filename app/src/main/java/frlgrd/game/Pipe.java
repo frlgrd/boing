@@ -63,7 +63,7 @@ class Pipe extends GameObject {
 
 	boolean isMattTouching(Matt matt) {
 		if (touched) return false;
-		boolean touching = RectF.intersects(top, matt.getHitBox()) || RectF.intersects(matt.getHitBox(), bottom);
+		boolean touching = RectF.intersects(top, matt.getHitBox()) || RectF.intersects(bottom, matt.getHitBox());
 		if (touching) {
 			touched = true;
 		}
